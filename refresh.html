@@ -8,9 +8,25 @@
  <title>Document</title>
 </head>
 <body>
- <div id="container" onclick="volume()"></div>
- <div id="container2" onclick="wrappingpaper()"></div>
- <div id="container3" onclick="surfacearea()"></div>
+    <div class="snow">
+ <div id="container">
+    <button onclick="volume()" id="volume" class="multicolortext">volume</button>
+    <label class="multicolortext">Volume: <br></be><label id="volume1"class="multicolortext"></label><br> feet^3</label>
+</div>
+
+ <div id="container2">
+    <button onclick="wrappingpaper()" id="wrappingpaper" class="multicolortext">Paper</button>
+    <label class="multicolortext">Wrappingpaper: <br><label id="wrappingpaper1" class="multicolortext"></label><br> feet^2</label>
+</div>
+ <div id="container3" >
+    <button onclick="length()" id="length" class="multicolortext">Length</button>
+    <label class="multicolortext">Length: <br><label id="length1" class="multicolortext"></label><br> feet</label>
+</div>
+<div id="container4" >
+    <button onclick="ribbon()" id="ribbon" class="multicolortext">Ribbon</button>
+    <label class="multicolortext">Ribbon: <br><label id="ribbon1" class="multicolortext"></label><br> feet</label>
+</div>
+</div>
  <script src="refresh.js"></script>
 </body>
 </html>

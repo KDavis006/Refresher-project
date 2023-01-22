@@ -2,44 +2,88 @@ let array = "3x11x24 13x5x19 1x9x27 24x8x21 6x8x17 19x18x22 10x9x12 12x2x5 26x6x
 array = array.split(" ");
 
 
+document.getElementById("wrappingpaper").style = "display: none;" 
+document.getElementById("length").style = "display: none;"
+document.getElementById("ribbon").style = "display: none;"
 
-
- let valarray = []
- let total = 0
+ let array2 = []
+ let array3 = []
+ let valarray =  []
+ let val2array = []
+ let val3array = []
+ let val4array = []
+ let total =  0
+ let total2 = 0
+ let total3 = 0
+ let total4 = 0
 function volume(){
 for(let i = 0;i < array.length;i++){
  let x = array[i].split('x', 3);
- let val = Number(x[0]) * Number(x[1]) * Number(x[2])
- x = x.sort()
- console.log(x);
+ x = x.map(Number);
+ array3.push(x)
+ let val = x[0] * x[1] * x[2]
+ x = x.sort(function(a, b) {
+  return a - b;
+});
+ array2.push(x);
  valarray.push(val);
 }
-
+console.log(array2);
 for(let i = 0; i < valarray.length; i++){
  total += valarray[i]
 }
-
-
-console.log(total);
-
-
+document.getElementById("volume1").innerHTML = total
+document.getElementById("volume").style = "display: none;"
+document.getElementById("wrappingpaper").style = "display: block;" 
 }
 
-// function surfacearea(){
+function wrappingpaper(){
+  console.log(array2);
+  for(let i  = 0;i<array2.length;i++){
+    let y = array2[i]
+    console.log(y);
+    let val2 = (2*y[0] + y[2]) * (2*y[1] + 2*y[0])
+    val2array.push(val2);
+  }
+  for(let i = 0; i < val2array.length; i++){
+    total2 += val2array[i]
+   }
+  document.getElementById("wrappingpaper").style = "display: none;"
+  document.getElementById("length").style = "display: block;"
+  document.getElementById("wrappingpaper1").innerHTML = total2
+}
 
-// }
 
-for(let i = 0; i < 1; i++){
-  let square = document.createElement('button');
-  square.addEventListener('onclick', volume)
-  square.textContent = 'Volume'
-  square.style = 'background-color: blue; font-size:100px; display: block;'
-  container.appendChild(square)
-  square.id = 'button'
+function length(){
+  for(let i  = 0;i<array3.length;i++){
+    let z = array3[i]
+    console.log(z);
+    let val3 = 0
+    if(z[0] - z[1] >= 0){
+      val3 = z[0]
+    } else {
+      val3 = z[1]
+    }
+    val3array.push(val3);
+  }
+  for(let i = 0; i < val3array.length; i++){
+    total3 += val3array[i]
+   }
+   document.getElementById("length").style = "display: none;"
+   document.getElementById("ribbon").style = "display: block;"
+  document.getElementById("length1").innerHTML = total3
+}
 
-  // let square2 = document.createElement('h1');
-  // square2.style = 'background-color: blue; font-size:100px; display: hidden;'
-  // container.appendChild(square2)
-  // square2.id = 'h1'
-
+function ribbon(){
+  for(let i  = 0;i<array3.length;i++){
+    let w = array3[i]
+    console.log(w);
+    let val4 = (w[0] + w[1] + w[0] + w[1]) + (w[0] + w[2] + w[0] + w[2]) + (w[0] * w[1] * w[2])
+    val4array.push(val4)
+}
+for(let i = 0; i < val4array.length; i++){
+  total4 += val4array[i]
+ }
+ document.getElementById("ribbon").style = "display: none;"
+  document.getElementById("ribbon1").innerHTML = total4
 }
