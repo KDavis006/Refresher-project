@@ -14,6 +14,7 @@ document.getElementById("ribbon").style = "display: none;"
  let val2array = []
  let val3array = []
  let val4array = []
+ let valuearray = []
  let total =  0
  let total2 = 0
  let total3 = 0
@@ -32,7 +33,6 @@ for(let i = 0;i < array.length;i++){
  array2.push(x);
  valarray.push(val);
 }
-console.log(array2);
 for(let i = 0; i < valarray.length; i++){
  total += valarray[i]
 }
@@ -43,13 +43,16 @@ document.getElementById("wrappingpaper").style = "display: block;"
 }
 // wrapping paper fuction
 function wrappingpaper(){
-  console.log(array2);
   for(let i  = 0;i<array2.length;i++){
     let y = array2[i]
-    console.log(y);
+    let value = (2*y[0] + y[2])
+    let value2 = (2*y[1] + 2*y[0])
     let val2 = (2*y[0] + y[2]) * (2*y[1] + 2*y[0])
+    valuearray.push(value);
+    valuearray.push(value2);
     val2array.push(val2);
   }
+  console.log(valuearray);
   for(let i = 0; i < val2array.length; i++){
     total2 += val2array[i]
    }
@@ -61,14 +64,18 @@ function wrappingpaper(){
 
 // length function
 function length(){
-  for(let i  = 0;i<array3.length;i++){
-    let z = array3[i]
-    console.log(z);
+  for(let i  = 0;i<valuearray.length;i+=2){
+    let b = i
+    b++
+    let z = valuearray[i]
+    let v = valuearray[b]
+    console.log(z)
+    console.log(v)
     let val3 = 0
-    if(z[0] - z[1] >= 0){
-      val3 = z[0]
+    if(z >= v){
+      val3 = v
     } else {
-      val3 = z[1]
+      val3 = z
     }
     val3array.push(val3);
   }
@@ -84,7 +91,6 @@ function length(){
 function ribbon(){
   for(let i  = 0;i<array3.length;i++){
     let w = array3[i]
-    console.log(w);
     let val4 = (w[0] + w[1] + w[0] + w[1]) + (w[0] + w[2] + w[0] + w[2]) + (w[0] * w[1] * w[2])
     val4array.push(val4)
 }
